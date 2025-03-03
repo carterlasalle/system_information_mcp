@@ -1,0 +1,11 @@
+startCommand:
+  type: stdio
+  configSchema: {}
+  commandFunction: |
+    async function(config) {
+      return {
+        command: "python",
+        args: ["claudemcp.py"],
+        env: {}
+      }
+    }
