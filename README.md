@@ -1,6 +1,7 @@
 # DevEnvInfoServer - Cursor MCP Server for Development Environment Information
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/carterlasalle/system_information_mcp)
+[![smithery badge](https://smithery.ai/badge/@carterlasalle/system_information_mcp)](https://smithery.ai/server/@carterlasalle/system_information_mcp)
 
 This project implements a Cursor Model Context Protocol (MCP) server that provides detailed information about your development environment to the Cursor code editor.  By leveraging this server, Cursor's intelligent agent can gain a deeper understanding of your system's configuration, installed tools, and running processes, enabling more context-aware and helpful assistance.
 
