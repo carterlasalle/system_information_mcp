@@ -817,7 +817,7 @@ async def analyze_cursor_environment(ctx: Context) -> str:
     return markdown
 
 @mcp.tool()
-async def scan_system(ctx: Context, categories: Union[List[str], str, None] = None, output_format: Optional[str] = "markdown") -> str:
+async def scan_system(ctx: Context, categories: Union[List[str], str, None] = None, output_format: Optional[str] = "json") -> str:
     """
     Scan the system and collect information about the specified categories.
 
