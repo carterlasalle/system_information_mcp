@@ -1146,16 +1146,15 @@ async def generate_system_report(ctx: Context, output_path: Optional[str] = None
     # Use the existing scan_system function
     report = await scan_system(ctx, categories, format)
     
-    # Write to file if path provided
-    if output_path:
-        try:
-            with open(os.path.expanduser(output_path), "w") as f:
-                f.write(report)
-            return f"System report saved to {output_path} ({len(report)} bytes)"
-        except Exception as e:
-            return f"Error writing report to file: {str(e)}\n\n{report}"
-    
-    # Otherwise return directly
+    # MCP clients are not trusted to choose filesystem destinations. Returning
+    # the report keeps this tool read-only and avoids arbitrary file overwrite.
+    # Callers that need a file can save the returned report themselves.
+    if output_path is not None:
+        raise ValueError(
+            "output_path is not supported: generate_system_report is read-only; "
+            "omit output_path to receive the report"
+        )
+
     return report
 
 # Run the server directly with stdio transport
