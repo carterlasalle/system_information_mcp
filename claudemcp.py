@@ -1136,16 +1136,9 @@ async def generate_system_report(ctx: Context, output_path: Optional[str] = None
     Generate a comprehensive system report with all available information.
     
     Args:
-        output_path: Optional path to save the report. If not provided, returns the report directly.
+        output_path: Unsupported; omit to receive the report directly.
         format: Format for the output. Supported values: "markdown"(DONT USE), "json"(USE) (DONT USE MARKDOWN, USE JSON FOR NOW)
     """
-    # List all categories to scan
-    categories = ["os", "hardware", "python", "network", "programs", "compilers", 
-                  "gpu", "containers", "processes"]
-    
-    # Use the existing scan_system function
-    report = await scan_system(ctx, categories, format)
-    
     # MCP clients are not trusted to choose filesystem destinations. Returning
     # the report keeps this tool read-only and avoids arbitrary file overwrite.
     # Callers that need a file can save the returned report themselves.
@@ -1155,6 +1148,13 @@ async def generate_system_report(ctx: Context, output_path: Optional[str] = None
             "omit output_path to receive the report"
         )
 
+    # List all categories to scan
+    categories = ["os", "hardware", "python", "network", "programs", "compilers", 
+                  "gpu", "containers", "processes"]
+    
+    # Use the existing scan_system function
+    report = await scan_system(ctx, categories, format)
+    
     return report
 
 # Run the server directly with stdio transport
